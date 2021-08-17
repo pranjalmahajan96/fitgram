@@ -1,10 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { loginService } from "../userSlice";
 import { useState } from "react";
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const { userLoading } = useSelector(state => state.user)
+  console.log({userLoading})
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -50,7 +52,7 @@ export const LoginForm = () => {
               type="submit"
               onClick={() => loginHandler(email, password)}
             >
-              LOGIN
+             {userLoading === "not-loading" ? "Login" : userLoading === "loading" ? "Logging in..." : "Try Again" }
             </button>
           </div>
         </div>

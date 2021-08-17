@@ -153,7 +153,7 @@ const initialState = {
     posts: [],
     profilePic: ""
   },
-  userLoading: true,
+  userLoading: "not-loading" ,
   isError: false,
   errorMsg: "",
   profileLoading: false,
@@ -184,7 +184,7 @@ export const userSlice = createSlice({
       state.loginStatus = false;
       state.isError = false;
       state.errorMessage = "";
-      state.userLoading = false;
+      state.userLoading = "not-loading" ;
       state.profileLoading = false;
       state.actionInProgress = false;
       state.userProfile = {
@@ -195,10 +195,10 @@ export const userSlice = createSlice({
   },
   extraReducers: {
     [signupService.pending]: (state, action) => {
-      state.userLoading = true;
+      state.userLoading = "loading";
     },
     [signupService.fulfilled]: (state, action) => {
-      state.userLoading = false;
+      state.userLoading = "fulfilled";
       if (action.payload.success) {
         state.loginStatus = true;
         state.user = action.payload.user;
@@ -207,17 +207,17 @@ export const userSlice = createSlice({
       }
     },
     [signupService.rejected]: (state, action) => {
-      state.userLoading = false;
+      state.userLoading = "error";
       state.isError = true;
       state.errorMsg = action.error.message;
     },
 
 
     [loginService.pending]: (state, action) => {
-      state.userLoading = true;
+      state.userLoading = "loading";
     },
     [loginService.fulfilled]: (state, action) => {
-      state.userLoading = false;
+      state.userLoading = "fulfilled";
       if (action.payload.success) {
         state.loginStatus = true;
         state.user = action.payload.user;
@@ -227,7 +227,7 @@ export const userSlice = createSlice({
       }
     },
     [loginService.rejected]: (state, action) => {
-      state.userLoading = false;
+      state.userLoading = "error";
       state.isError = true;
       state.errorMsg = action.error.message;
     },
