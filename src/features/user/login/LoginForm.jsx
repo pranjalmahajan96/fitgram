@@ -6,7 +6,6 @@ import { useState } from "react";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const { userLoading } = useSelector(state => state.user)
-  console.log({userLoading})
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
