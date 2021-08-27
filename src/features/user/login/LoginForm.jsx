@@ -53,9 +53,15 @@ export const LoginForm = () => {
             >
              {userLoading === "not-loading" ? "Login" : userLoading === "loading" ? "Logging in..." : "Try Again" }
             </button>
+            <div>
+              username - pranjal@gmail.com
+            </div>
+            <div>
+              pswd - pranjal
+          </div>
           </div>
         </div>
-
+      
         <div>
           Don't have an account{" "}
           <NavLink className="link btn-outline" to="/signup">
