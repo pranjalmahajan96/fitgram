@@ -146,6 +146,7 @@ export const postSlice = createSlice({
             state.errorMsg = "";
             state.postList = [];
             state.actionInProgress = false;
+            state.postUpload = "initial";
         },
     },
     extraReducers: {
@@ -181,13 +182,16 @@ export const postSlice = createSlice({
         },
 
         [createPostService.pending]: (state) => {
+            state.postUpload = "uploading";
             state.actionInProgress = true;
         },
         [createPostService.fulfilled]: (state, action) => {
+            state.postUpload = "uploaded";
             state.actionInProgress = false;
             state.feed = [...state.feed, action.payload.post];
         },
         [createPostService.rejected]: (state, action) => {
+            state.postUpload = "error";
             state.actionInProgress = false;
             state.isError = true;
             state.errorMsg = action.error.message;

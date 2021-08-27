@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { createPostService } from "../postSlice";
 
 export const Post = () => {
@@ -9,6 +10,8 @@ export const Post = () => {
   const [imageURL,setImageURl] = useState("");
   const [ err, setErr] = useState("");
   const dispatch = useDispatch();
+  const { postUpload } = useSelector(state => state.post);
+  const navigate = useNavigate();
 
   useEffect(async ()=>{
     if(imageURL !== "" || title !== ""){
@@ -17,6 +20,7 @@ export const Post = () => {
           // console.log({imageURL});
           // console.log("calling dispatch")
          dispatch(createPostService({title,imageURL}));
+         navigate("/explorefeed")
       } catch (error){
         console.log("error while creating the post",error);
       }
@@ -71,7 +75,7 @@ export const Post = () => {
               
                 onClick={() => uploadHander()}
               >
-                UPLOAD
+                Upload
               </button>
            
           </div>
