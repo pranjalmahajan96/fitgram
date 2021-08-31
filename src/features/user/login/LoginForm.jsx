@@ -9,6 +9,8 @@ export const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const emailGuest = "pranjal@gmail.com";
+  const pswdGuest = "pranjal";
 
   const loginHandler = (email, password) => {
     if (email === "" || password === "") {
@@ -54,11 +56,11 @@ export const LoginForm = () => {
              {userLoading === "not-loading" ? "Login" : userLoading === "loading" ? "Logging in..." : "Try Again" }
             </button>
             <div>
-              username - pranjal@gmail.com
+              <button className="btn btn-filled btn-no-hover centered"
+              style={{ display: "block", marginTop:"0.5rem" }}
+              type="submit"
+              onClick={() => dispatch(loginService({ emailGuest, pswdGuest }))}>Login As A Guest</button>
             </div>
-            <div>
-              pswd - pranjal
-          </div>
           </div>
         </div>
       
