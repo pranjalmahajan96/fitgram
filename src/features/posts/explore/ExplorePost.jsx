@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { addCommentService, likePostService, unlikePostService, deletePostService } from "../postSlice";
+import { MdDelete } from "react-icons/md";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 export const ExploreFeedPost = ({post}) => {
   const [placeholder, setPlaceholder] = useState("add a comment");
@@ -37,7 +39,7 @@ export const ExploreFeedPost = ({post}) => {
           <NavLink className="username-feed" to={ post?.postedBy?._id !== userId ? `/profile/${post?.postedBy?._id}` : `/profile`}> {post?.postedBy?.name} </NavLink>
           { 
             post?.postedBy?._id === userId 
-            ? <button className="btn btn-outline btn-no-hover btn-right" onClick={(e) => deletePost(e, post._id, userId)}>DEL</button> 
+            ? <button className="btn btn-outline btn-no-hover btn-right" onClick={(e) => deletePost(e, post._id, userId)}><MdDelete /></button> 
             : null 
           } 
          </h5>
@@ -48,11 +50,11 @@ export const ExploreFeedPost = ({post}) => {
             alt="pic in the post"
           />
         </div>
-        <div className="post-left"> 
+        <div className="post-left username-feed"> 
           {
             post?.likes?.includes(userId) 
-            ? <div> <button onClick={(e)=>unlikePost(e, post._id, userId)}> unlike </button> <span> {post?.likes?.length} likes</span> </div>
-            : <div> <button onClick={(e)=>likePost(e, post._id, userId)}> like </button> <span> {post?.likes?.length} likes</span> </div>
+            ? <div> <button onClick={(e)=>unlikePost(e, post._id, userId)}> <AiFillHeart /> </button> <span> {post?.likes?.length} likes</span> </div>
+            : <div> <button onClick={(e)=>likePost(e, post._id, userId)}> <AiOutlineHeart /> </button> <span> {post?.likes?.length} likes</span> </div>
           }
          </div>
         <div className="post-left">
