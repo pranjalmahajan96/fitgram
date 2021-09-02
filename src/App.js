@@ -1,7 +1,7 @@
 import "./styles.css";
 import { Route, Routes } from "react-router-dom";
 import { PrivateRoute } from "./private-route";
-import { Header, Login, Profile, Signup, Feed, Post, UserProfile, ExploreFeed } from "./features";
+import { Header, Login, Profile, Signup, Feed, Post, UserProfile, ExploreFeed, SearchUsers } from "./features";
 
 export default function App() {
   return (
@@ -16,6 +16,7 @@ export default function App() {
         <PrivateRoute path="/explorefeed" element={<ExploreFeed />} />
         <PrivateRoute exact path="/profile" element={<Profile />} />
         <PrivateRoute path="/profile/:userId" element={<UserProfile />} />
+        <PrivateRoute path="/search" element={<SearchUsers />} />
       </Routes>
     </div>
   );

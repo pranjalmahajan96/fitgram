@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logoutBtnPressed } from "../user/userSlice";
+import { ImSearch } from "react-icons/im"
 
 export const Header = () => {
   const dispatch = useDispatch();
@@ -15,6 +16,11 @@ export const Header = () => {
         </div>
 
         <ul className="list-non-bullet nav-pills">
+        <li className="list-item-inline">
+            <NavLink to="/search" className="link link-active">
+              <ImSearch style={{color:"white"}}/>
+            </NavLink>
+          </li>
           <li className="list-item-inline">
             <NavLink to="/post" className="link link-active">
               Post

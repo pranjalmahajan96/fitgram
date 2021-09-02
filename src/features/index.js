@@ -7,3 +7,4 @@ export { Feed } from "./posts/feed/Feed";
 export { Post } from "./posts/post/Post";
 export { UserProfile } from "./user/userProfile/UserProfile"
 export { ExploreFeed } from "./posts/explore/Explore"
+export { SearchUsers } from "./user/searchUsers/SearchUsers"
