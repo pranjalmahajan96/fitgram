@@ -6,8 +6,8 @@ import { useState } from "react";
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const { userLoading } = useSelector(state => state.user)
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("pranjal@gmail.com");
+  const [password, setPassword] = useState("pranjal");
   const [error, setError] = useState("");
   const emailGuest = "pranjal@gmail.com";
   const pswdGuest = "pranjal";
@@ -55,12 +55,12 @@ export const LoginForm = () => {
             >
              {userLoading === "not-loading" ? "Login" : userLoading === "loading" ? "Logging in..." : "Try Again" }
             </button>
-            <div>
+            {/* <div>
               <button className="btn btn-filled btn-no-hover centered"
               style={{ display: "block", marginTop:"0.5rem" }}
               type="submit"
               onClick={() => dispatch(loginService({ emailGuest, pswdGuest }))}>Login As A Guest</button>
-            </div>
+            </div> */}
           </div>
         </div>
       
