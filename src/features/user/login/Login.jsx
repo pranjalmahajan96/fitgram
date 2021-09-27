@@ -11,7 +11,7 @@ export const Login = () => {
   const name = useSelector((state) => state.user.user.name);
 
   useEffect(()=>{
-    login ? navigate("/feed") : navigate("/login")
+    login ? navigate("/explorefeed") : navigate("/login")
   },[login, navigate])
 
   return login ? (
